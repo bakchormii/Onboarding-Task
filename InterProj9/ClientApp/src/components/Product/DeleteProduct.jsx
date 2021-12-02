@@ -2,17 +2,27 @@ import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Button, Header, Image, Form, Modal } from 'semantic-ui-react'
 
-function DeleteProduct() {
-  const [open, setOpen] = React.useState(false)
+// function CreateCustomer(props) {
+//   // const [open, setOpen] = React.useState(false)
+// const{open,openCreateModal,fetchCustomer}= props;
+// to include all functions and structuring here under const{}=props
+function DeleteProduct(id) {
+  const [open, setOpen,refresh] = id ;
 
+  const deleteProduct= (id)=> {
+    axios.delete("Products/DeleteProduct/"+id)
+    .then(res=>{
+    refresh();
+    })
+    }
   return (
     <Modal
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(false)}
+      // onClose={() => setOpen(false)}
+      // onOpen={() => setOpen(false)}
       open={open}
       trigger={<Button>Show Modal</Button>}
     >
-      <Modal.Header>DeleteProduct</Modal.Header>
+      <Modal.Header>DeleteCustomer</Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <p>Are you sure?</p>
@@ -26,7 +36,7 @@ function DeleteProduct() {
           content="delete"
           labelPosition='right'
           icon='remove'
-          onClick={() => setOpen(true)}
+          onClick={()=> deleteProduct}
           positive
         />
       </Modal.Actions>

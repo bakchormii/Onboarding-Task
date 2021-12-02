@@ -44,6 +44,12 @@ export default class NavBarSUI extends Component {
           active={activeItem === 'Sale'}
           onClick={this.handleItemClick}
         />
+        <Menu.Item
+          as={NavLink} to="/dashboard"
+          name='dashboards'
+          active={activeItem === 'dashboard'}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     )
   }

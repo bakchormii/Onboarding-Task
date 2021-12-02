@@ -4,40 +4,50 @@ import axios from 'axios';
 
 function EditCustomer(props) {
 //   const [open, setOpen] = React.useState(false)
-  const {open,openCreateModal,fetchProduct} = props;
+  const {open,openCreateModal,fetchCustomer} = props;
 
   const [name,setName]= useState("");
   const [address,setAddress]= useState("");
 
-  useEffect(() => {
-      console.log(name)
-      return () => {
-          //runs on unmount
-      }
-  }, [name]);
-  
-  useEffect(() => {
-    console.log(address)
-    return () => {
-        //runs on unmount
-    }
-}, [address]);
-
-  const EditCustomer =(id)=>{
+  // const EditCustomer =(id)=>{
+  //   axios.put("/Customers/PutCustomer/"+id,{
+  //       name:name,
+  //       address:address
+  //   })
+    const EditCustomer =(namec,addressc,id)=>{
       axios.put("/Customers/PutCustomer/"+id,{
-          name:name,
-          address:address
+          name:namec,
+          address:addressc
       })
-      .then(res=>{
-          openCreateModal(false);
-          setName("");
-          setAddress("");
-          fetchProduct();
-      })
-      .catch(err=> {
-          alert(err);
-      })
-  }
+
+    .then(res=>{
+        openCreateModal(false);
+        setName("");
+        setAddress("");
+        fetchCustomer();
+    })
+    .catch(err=> {
+        alert(err);
+    })
+}
+      useEffect(() => {
+        setName(name)
+        setAddress(address)
+      },[name,address]
+      );
+//   useEffect(() => {
+//       console.log(name)
+//       return () => {
+//           //runs on unmount
+//       }
+//   }, [name]);
+  
+//   useEffect(() => {
+//     console.log(address)
+//     return () => {
+//         //runs on unmount
+//     }
+// }, [address]);
 
   return (
     <Modal open={open}>
@@ -62,7 +72,7 @@ function EditCustomer(props) {
       </Modal.Content>
       <Modal.Actions>
         <Button color='black' onClick={()=>openCreateModal(false)}>Cancel</Button>
-        <Button color='green' onClick={EditCustomer}>Edit</Button>
+        <Button color='green' onClick={EditCustomer(name,address)}>Edit</Button>
       </Modal.Actions>
     </Modal>
   )
