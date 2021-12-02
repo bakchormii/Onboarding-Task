@@ -53,10 +53,6 @@ function EditProduct(props) {
       <label>Price</label>
       <input placeholder='address'onChange={(e)=>setAddress(e.target.value)} />
     </Form.Field>
-    {/* <Form.Field>
-    <label>ID</label>
-    <Select placeholder='Select your country' options={countryOptions} />
-    </Form.Field> */}
   </Form>
         </Modal.Description>
       </Modal.Content>

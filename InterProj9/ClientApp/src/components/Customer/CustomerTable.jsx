@@ -31,7 +31,7 @@ refresh();
       </Table.Row>
     </Table.Header>
     <Table.Body>
-        {customer.map((s)=>{//can include logic here..if esle statement
+        {[customer.map((s)=>{//can include logic here..if esle statement
         return(
           
                   <Table.Row key={s.id}>
@@ -43,7 +43,7 @@ refresh();
                 </Table.Row>
 
         );
-        })}
+        })]}
     </Table.Body>
   </Table>
 )}

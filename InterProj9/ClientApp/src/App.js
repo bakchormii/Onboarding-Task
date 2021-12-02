@@ -6,6 +6,8 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import CustomerHome from "./components/Customer/CustomerHome";
 import ProductHome from './components/Product/ProductHome';
+import { dashboardHome } from './components/dashboard/dashboardHome';
+import StoreHome from './components/Store/StoreHome';
 
 import './custom.css'
 
@@ -20,6 +22,8 @@ export default class App extends Component {
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/customer' component={CustomerHome} />
         <Route path='/product' component={ProductHome} />
+        <Route path='/Store' component={StoreHome} />
+        <Route path='/dashboard' component={dashboardHome} />
       </Layout>
     );
   }
